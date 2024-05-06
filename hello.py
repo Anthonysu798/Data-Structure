@@ -97,3 +97,5 @@ while (True):
 #for i in range(0, 100, 10): the third value is increment by 10 0, 10, 20, 30, 40, 50, 60, 70, 80, 90
 for i in range(0, 10): 
     print(i)
+
+
