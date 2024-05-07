@@ -59,7 +59,7 @@ def get_user_info():
     firstName = input("Enter your first name: ")
     lastName = input("Enter your last name: ")
     check_user_age()
-    print(f"Hello {firstName}{lastName} welcome to this python course and you are {age} years odld")
+    print(f"Hello {firstName}{lastName} welcome to this python course and you are {age} years old")
 
 get_user_info()
 
@@ -86,3 +86,55 @@ for age in ageOfUser:
 # print the first 5 elements from the list
 print("\n",ageOfUser[:5])
 
+# create a class Person
+
+class Person:
+    def __init__(self, name, age): # defaul constructor
+        self.name = name
+        self.age = age
+    
+    def __str__(self): # print the object
+        return f"Name: {self.name} Age: {self.age}"
+    
+    def myfunc(self):
+        print(f"Hello my name is {self.name}\n\n")
+
+class Student: # Default constructor
+    def __init__(self, studentId, studentEmail, studentFirstName, studentLastName):
+        self.studentId = studentId
+        self.studentEmail = studentEmail
+        self.studentFirstName = studentFirstName
+        self.studentLastName = studentLastName
+
+    def __str__(self): # print the object just calling p1, p2, p3, p4 for example
+        return f"""Student ID: {self.studentId}
+Student Email: {self.studentEmail}
+Student First Name: {self.studentFirstName}
+Student Last Name: {self.studentLastName}\n"""
+    
+
+
+p1 = Person("John", 19)
+p2 = Person("Steve", 20)
+p3 = Person("Bill", 21)
+p4 = Person("Mike", 22)
+
+print(p1)
+p1.myfunc()
+
+print(p2)
+p2.myfunc()
+
+print(p3)
+p3.myfunc()
+
+print(p4)
+p4.myfunc()
+
+s1 = Student(142714229, "asu21@myseneca.ca", "Anthony", "Su")
+s2 = Student(142714230, "Hohnhuang@myseneca.ca", "John", "Huang")
+s3 = Student(142714231, "BillSmit@myseneca.ca ", "Bill", "Smith") 
+
+print(s1)
+print(s2)
+print(s3)
