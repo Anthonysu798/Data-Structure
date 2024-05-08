@@ -138,3 +138,31 @@ s3 = Student(142714231, "BillSmit@myseneca.ca ", "Bill", "Smith")
 print(s1)
 print(s2)
 print(s3)
+
+# Create a Parent class and a child class
+# Parent class also call base class
+# Child class also call derived class
+
+# Parent class
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def __str__(self):
+        return f"""Make: {self.make}
+Model: {self.model}
+Year: {self.year}
+"""
+    
+# Child class
+class ElectricCar(Car): # Inherit the Car class
+    pass # pass keyword is used when you have a class with no content
+
+
+# Create an object of the parent class
+c1 = ElectricCar("Tesla", "Model S", 2021)
+c2 = Car("Toyota", "Corolla", 2021)
+print(c1)
+print(c2)
