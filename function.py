@@ -138,7 +138,7 @@ print("Sum:", numbers.get_sum())
 print("Avg:", numbers.get_avg())
 print("Search 5:", numbers.search(5))
 print("Search 11:", numbers.search(11))
-printf("Search:", "Found" if numbers.search(5) else "Not Found")
+print("Search:", "Found" if numbers.search(5) else "Not Found")
 print("Even Numbers:", numbers.even_numbers())
 
 
