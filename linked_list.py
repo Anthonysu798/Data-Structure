@@ -50,10 +50,47 @@ class LinkedList:
             itr = itr.next
         return count
 
-# Remove an element at a given index
+    # Remove an element at a given index
+    def remove_at(self, index):
+        if index < 0 or index >= self.get_length():
+            raise Exception("Invliad Index")
+
+        if index == 0:
+            self.head = self.head.next
+            return
+
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+            count += 1
+
+    # Implement insert_at method
+    def insert_at(self, index, data):
+        if index < 0 or index > self.get_length():
+            raise Exception("Invalid Index")
+
+        if index == 0:
+            self.insert_at_beginning(data)
+            return
+
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1:
+                node = Node(data, itr.next)
+                itr.next = node
+                break
+            itr = itr.next
+            count += 1
+
 
 if __name__ == "__main__":
     ll = LinkedList()
     ll.insert_values(["Banana", "Mango", "Grapes", "Orange"])
+    ll.insert_at(0, "Fig")
+    ll.insert_at(2, "jackfruit")
     ll.print()
-    print("length:", ll.get_length())
