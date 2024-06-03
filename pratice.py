@@ -1,168 +1,79 @@
-# # name = input("Enter your name: ")
-# # age = int(input("Enter your age: "))
-
-# # print(f"Hello {name} you are {age} years old");
-
-# # if else statement that check if the user is an adult or a minor
-# if (age >= 18):
-#     print("You are an adult")
-#     print("You can drink alcohol")
-# else:
-#     print("You are a minor")
-#     print("You cannot drink alcohol")
-
-x = str(3)
-y = int(3)
-z = float(3)
-
-print(type(x))
-print(type(y))
-print(type(z))
-
-# Assignment multiple values to multiple variables
-x, y, z = "Orange", "Banana", "Cherry"
-
-
-print(x) # Orange
-print(y) # Banana
-print(z) # cherry
-
-
-print(f"\nOne value to multiple variables",end = "\n\n")
-x = y = z = "Orange"
-print(f"x = {x}") # Orange
-print(f"y = {y}") # Orange
-print(f"z = {z}") # Orange
-
-print(f"\nUnpack a collection",end = "\n\n")
-fruits = ["apple", "banana", "cherry"]
-x, y, z = fruits
-print(f"fruits = {fruits}")
-print(f"x, y, z = fruits")
-print(f"x = {x}")
-print(f"y = {y}")
-print(f"z = {z}")
-
-# Define a function that check user age
-def check_user_age():
-    global age # Make the variable global
-    age = int(input("Enter your age: "))
-    if (age >= 18):
-        print("You are an adult")
-        print("You can drink alcohol")
-    else:
-        print("You are a minor")
-        print("You cannot drink alcohol")
-
-# Define a function that ask the user first name, last name and age
-def get_user_info():
-    firstName = input("Enter your first name: ")
-    lastName = input("Enter your last name: ")
-    check_user_age()
-    print(f"Hello {firstName}{lastName} welcome to this python course and you are {age} years old")
-
-get_user_info()
-
-# Multiple line string
-multiline = """\n\nThis is a multiple line string
-that can be written in multiple lines
-and it will be printed in multiple lines"""
-
-print(multiline)
-
-ageOfUser = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
-
-for age in ageOfUser:
-    # print all the ages in the list
-
-    ageOfUser.reverse()
-    print(age, end=' ')
-
-# Slicing
-# What is slicing?
-# Slicing is a way to extract a range of elements from a list
-# Syntax: list[start:end:increment]
-
-# print the first 5 elements from the list
-print("\n",ageOfUser[:5])
-
-# create a class Person
-
-class Person:
-    def __init__(self, name, age): # defaul constructor
+# Define Student class
+class Student:
+    # Define constructor
+    def __init__(self, name, cgpa):
         self.name = name
-        self.age = age
+        self.cgpa = cgpa
     
-    def __str__(self): # print the object
-        return f"Name: {self.name} Age: {self.age}"
+    def toString(self):
+        return f"Name: {self.name} CGPA: {self.cgpa}"
     
-    def myfunc(self):
-        print(f"Hello my name is {self.name}\n\n")
+# Create a Node class
+class Node:
+    # Define constructor
+    def __init__(self, student, next=None, pre=None):
+        self.data = student 
+        self.next = next
+        self.pre = pre 
 
-class Student: # Default constructor
-    def __init__(self, studentId, studentEmail, studentFirstName, studentLastName):
-        self.studentId = studentId
-        self.studentEmail = studentEmail
-        self.studentFirstName = studentFirstName
-        self.studentLastName = studentLastName
-
-    def __str__(self): # print the object just calling p1, p2, p3, p4 for example
-        return f"""Student ID: {self.studentId}
-Student Email: {self.studentEmail}
-Student First Name: {self.studentFirstName}
-Student Last Name: {self.studentLastName}\n"""
+class LinkedList:
+    # Define constructor
+    def __init__(self):
+        self.front = None
+        self.back = None
     
+    # Define push_front method
+    def push_front(self, data):
+        node = Node(data, self.front)
 
+        # Check if the list is empty or not, set the self.back to the new node
+        if self.front is None:
+            self.back = node
+        else:
+            # If the list is not empty then set the current front node to the new node
+            self.front.pre = node
 
-p1 = Person("John", 19)
-p2 = Person("Steve", 20)
-p3 = Person("Bill", 21)
-p4 = Person("Mike", 22)
+        # After that then set the self.front to the new node
+        self.front = node
 
-print(p1)
-p1.myfunc()
+    def push_back(self, data):
+        node = Node(data, None, self.back)
 
-print(p2)
-p2.myfunc()
-
-print(p3)
-p3.myfunc()
-
-print(p4)
-p4.myfunc()
-
-s1 = Student(142714229, "asu21@myseneca.ca", "Anthony", "Su")
-s2 = Student(142714230, "Hohnhuang@myseneca.ca", "John", "Huang")
-s3 = Student(142714231, "BillSmit@myseneca.ca ", "Bill", "Smith") 
-
-print(s1)
-print(s2)
-print(s3)
-
-# Create a Parent class and a child class
-# Parent class also call base class
-# Child class also call derived class
-
-# Parent class
-class Car:
-    def __init__(self, make, model, year):
-        self.make = make
-        self.model = model
-        self.year = year
-
-    def __str__(self):
-        return f"""Make: {self.make}
-Model: {self.model}
-Year: {self.year}
-"""
+        # Check if the list is empty or not,
+        if self.front is None:
+            self.front = node
+        else:
+            self.back.next = node
     
-# Child class
-class ElectricCar(Car): # Inherit the Car class
-    pass # pass keyword is used when you have a class with no content
+        self.back = node
 
 
-# Create an object of the parent class
-c1 = ElectricCar("Tesla", "Model S", 2021)
-c2 = Car("Toyota", "Corolla", 2021)
-print(c1)
-print(c2)
+    
+    def display_front(self):
+        current = self.front
+
+        while current is not None:
+            print(current.data.toString())
+            current = current.next
+    
+    def display_back(self):
+        current = self.back
+
+        while current is not None:
+            print(current.data.toString())
+            current = current.pre
+
+lsk = LinkedList()
+lsk.push_back(Student("Bill", 3.2))
+lsk.push_back(Student("Toni798", 3.2))
+lsk.push_back(Student("John", 3.2))
+lsk.display_front()
+
+print("\n ------------\n")
+
+lsk.display_back()
+
+        
+        
+
+     
