@@ -70,11 +70,21 @@ class LinkedList:
             self.front = self.back = None
             del rm
         else:
-            rm = self.back
+            rm = self.back # point to which node we want to remove 
             self.back = self.back.pre
             self.back.next = None
             del rm
 
+    # Return number of nodes in the linked list
+    def length(self):
+        current = self.front
+        count = 0
+
+        while current is not None:
+            count += 1
+            current = current.next
+
+        return count
 
 
     def display_front(self):
@@ -102,6 +112,9 @@ lsk.display_front()
 lsk.pop_back()
 print("\nAfter Removal\n")
 lsk.display_front()
+
+# Call the length method
+print("\nLength of the linked list is: ", lsk.length())
 
 
 
