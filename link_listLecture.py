@@ -75,18 +75,6 @@ class LinkedList:
             self.back.next = None
             del rm
 
-    # Return number of nodes in the linked list
-    def length(self):
-        current = self.front
-        count = 0
-
-        while current is not None:
-            count += 1
-            current = current.next
-
-        return count
-
-
     def display_front(self):
         current = self.front
 
@@ -101,12 +89,49 @@ class LinkedList:
             print(current.data.toString())
             current = current.pre
 
+    # Return number of nodes in the linked list
+    def length(self):
+        current = self.front
+        count = 0
+
+        while current is not None:
+            count += 1
+            current = current.next
+        return count
+    
+    def search_by_name(self, name):
+        # return -1 if student not found
+        current = self.front
+        index = 0
+        while current is not None:
+            if current.data.name == name:
+                return index
+            index += 1
+            current = current.next
+        return -1
+    
+    def get_max_cgpa(self):
+        pass
+
+    def get_avg_cgpa(self):
+        pass
+            
+            
+        
+
+        
+    
+
+
 
 lsk = LinkedList()
 lsk.push_front(Student("John", 3.5))
 lsk.push_front(Student("Steve", 3.8))
 lsk.push_front(Student("Bill", 3.2))
 lsk.display_front()
+
+# Call the length method
+print("\nLength of the linked list is: ", lsk.length())
 
 
 lsk.pop_back()
@@ -115,6 +140,9 @@ lsk.display_front()
 
 # Call the length method
 print("\nLength of the linked list is: ", lsk.length())
+
+# Call the search_by_name method
+print("\nSearch by name at index : ", lsk.search_by_name("Steve"))
 
 
 
