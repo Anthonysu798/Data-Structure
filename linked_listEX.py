@@ -12,23 +12,15 @@ class LinkedList:
 
      # Linked List Constructor   
     def __init__(self):
-        self.front = None
-        self.back = None
+        self.front = self.Node(None)
+        self.back = self.Node(None, None.self.front)
+        self.front.next = self.back
 
     def push_front(self, data):
-        # Create the first Node
-        node = self.Node(data, self.front)
+        node = self.Node(data, self.front.next, self.front)
+        self.front.next.pre = node
+        self.front.next = node
 
-        # When linked list is empty
-        # In case of the first node, both front and back will point to the same node
-        if self.front is None:
-            self.back = node 
-        # If we already have some nodes
-        else: 
-            self.front.pre = node
-        
-        self.front = node
-    
     def display(self):
         current = self.front 
 

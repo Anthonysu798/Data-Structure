@@ -8,6 +8,7 @@ def factorial(n):
         return 1 
     else:
         return n * factorial(n-1)
+    # Time Complexity: O(n) because the function is called n times
     
 
 def fibonacci(n):
@@ -15,3 +16,5 @@ def fibonacci(n):
         return n # why return n?  because the first two numbers in the fibonacci sequence are 0 and 1
     else:
         return fibonacci(n-1) + fibonacci(n-2) # why n-1 and n-2?  because the fibonacci sequence is the sum of the two previous numbers
+    # Time Complexity: O(2^n) because the function is called 2^n times 
+
