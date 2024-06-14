@@ -83,4 +83,5 @@ haashMap.put(5, 25)
         
 haashMap.display()
 
-print(haashMap.get(6))
+print(haashMap.get(1))
+haashMap.display()
